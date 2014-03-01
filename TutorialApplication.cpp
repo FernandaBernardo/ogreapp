@@ -16,6 +16,9 @@ void TutorialApplication::createCamera(void) {
 }
 
 void TutorialApplication::createViewports(void) {
+    Ogre::Viewport* vp = mWindow->addViewport(mCamera);
+    vp->setBackgroundColour(Ogre::ColourValue(0,0,0));
+    mCamera->setAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
 }
 
 void TutorialApplication::createScene(void) {
