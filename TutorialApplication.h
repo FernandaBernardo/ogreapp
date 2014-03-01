@@ -3,11 +3,11 @@
 
 #include "BaseApplication.h"
 
-class BasicTutorial2 : public BaseApplication
+class TutorialApplication : public BaseApplication
 {
 public:
-	BasicTutorial2(void);
-	virtual ~BasicTutorial2(void);
+	TutorialApplication(void);
+	virtual ~TutorialApplication(void);
 
 protected:
 	virtual void createScene(void);

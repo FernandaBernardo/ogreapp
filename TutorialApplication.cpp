@@ -1,18 +1,18 @@
 #include "TutorialApplication.h"
 
-BasicTutorial2::BasicTutorial2(void) {
+TutorialApplication::TutorialApplication(void) {
 }
 
-BasicTutorial2::~BasicTutorial2(void) {
+TutorialApplication::~TutorialApplication(void) {
 }
 
-void BasicTutorial2::createCamera(void) {
+void TutorialApplication::createCamera(void) {
 }
 
-void BasicTutorial2::createViewports(void) {
+void TutorialApplication::createViewports(void) {
 }
 
-void BasicTutorial2::createScene(void) {
+void TutorialApplication::createScene(void) {
 }
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
