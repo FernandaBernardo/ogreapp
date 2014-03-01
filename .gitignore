@@ -1,3 +1,6 @@
 build
 build/CMakeFiles
+build/CMakeFiles/OgreApp.dir
 build/dist
+build/dist/bin
+
