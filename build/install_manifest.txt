@@ -1,0 +1,8 @@
+/home/fernanda/projects ogre/ogreapp/build/dist/.//media/models/ogrehead.mesh
+/home/fernanda/projects ogre/ogreapp/build/dist/.//media/packs/SdkTrays.zip
+/home/fernanda/projects ogre/ogreapp/build/dist/.//media/materials/scripts/Ogre.material
+/home/fernanda/projects ogre/ogreapp/build/dist/.//media/materials/textures/tusk.jpg
+/home/fernanda/projects ogre/ogreapp/build/dist/.//media/materials/textures/spheremap.png
+/home/fernanda/projects ogre/ogreapp/build/dist/.//media/materials/textures/GreenSkin.jpg
+/home/fernanda/projects ogre/ogreapp/build/dist/bin/plugins.cfg
+/home/fernanda/projects ogre/ogreapp/build/dist/bin/resources.cfg
