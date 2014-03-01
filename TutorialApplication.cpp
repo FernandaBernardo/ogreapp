@@ -7,6 +7,12 @@ TutorialApplication::~TutorialApplication(void) {
 }
 
 void TutorialApplication::createCamera(void) {
+    mCamera = mSceneMgr->createCamera("PlayerCam");
+    mCamera->setPosition(Ogre::Vector3(0,10,500));
+    mCamera->lookAt(Ogre::Vector3(0,0,0));
+    mCamera->setNearClipDistance(5);
+
+    mCameraMan = new OgreBites::SdkCameraMan(mCamera);
 }
 
 void TutorialApplication::createViewports(void) {
@@ -31,7 +37,7 @@ void TutorialApplication::createScene(void) {
 #endif
 		{
 			// Create application object
-			BasicTutorial2 app;
+			TutorialApplication app;
 
 			try {
 				app.go();
