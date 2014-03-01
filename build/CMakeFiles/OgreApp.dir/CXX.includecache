@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/fernanda/projects ogre/ogreapp/BaseApplication.cpp
-BaseApplication.h
-/home/fernanda/projects ogre/ogreapp/BaseApplication.h
-
 /home/fernanda/projects ogre/ogreapp/BaseApplication.h
 OgreCamera.h
 -
