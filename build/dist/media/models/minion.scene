@@ -1,0 +1,40 @@
+<scene export_time="1398646370.3011234" exported_by="fernanda" formatVersion="1.0.1" previous_export_time="0" >
+  <nodes >
+    <node name="Spot" >
+      <position x="-15.918656" y="6.710693" z="19.740984" />
+      <rotation qw="0.733235" qx="0.442720" qy="0.162641" qz="0.489809" />
+      <scale x="1.000000" y="1.000000" z="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <light name="Spot" powerScale="1.0" shadow="true" type="spot" >
+        <position x="-15.918656" y="6.710693" z="19.740984" />
+        <lightAttenuation constant="1.0" linear="0.05" quadratic="0.0" range="5000" />
+        <direction x="-0.862" y="-0.128" z="0.49" />
+        <spotLightRange falloff="1.0" inner="0.6675884527838338" outer="0.7853981852531433" />
+        <colourDiffuse b="1.0" g="1.0" r="1.0" />
+        <colourSpecular b="1.0" g="1.0" r="1.0" />
+        <colourShadow b="1.0" g="1.0" r="1.0" />
+      </light>
+    </node>
+    <node name="Camera" >
+      <position x="-0.351183" y="2.355759" z="7.801127" />
+      <rotation qw="0.726230" qx="0.687285" qy="0.009419" qz="-0.011874" />
+      <scale x="1.000000" y="1.000000" z="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <camera fov="0.5033799435163735" name="Camera" projectionType="perspective" >
+        <clipping far="100.0" farPlaneDist="100.0" near="0.10000000149011612" nearPlaneDist="0.10000000149011612" />
+      </camera>
+    </node>
+  </nodes>
+  <externals />
+  <environment >
+    <colourDiffuse b="0.05087608844041824" g="0.05087608844041824" r="0.05087608844041824" />
+    <colourBackground b="0.05087608844041824" g="0.05087608844041824" r="0.05087608844041824" />
+    <colourAmbient b="0.0" g="0.0" r="0.0" />
+  </environment>
+</scene>

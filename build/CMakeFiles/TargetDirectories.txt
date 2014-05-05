@@ -1,0 +1,1 @@
+/home/fernanda/projects ogre/ogreapp-new/build/CMakeFiles/OgreApp.dir

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+   <FileVersion major="1" minor="6" />
+   <Project>
+      <Option title="OgreApp" />
+      <Option makefile_is_custom="1" />
+      <Option compiler="gcc" />
+      <Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\usr\;CMake Files\..\..\..\..\usr\local\;CMake Files\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\usr\local\lib\OGRE\;CMake Files\..\..\..\..\usr\local\lib\OGRE\cmake\;CMake Files\..\..\..\..\usr\share\;CMake Files\..\..\..\..\usr\share\OpenCV\;" />
+      <Build>
+      <Target title="all">
+         <Option working_dir="/home/fernanda/projects ogre/ogreapp-new/build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 all" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="OgreApp">
+         <Option output="/home/fernanda/projects ogre/ogreapp-new/build/dist/bin/OgreApp" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/fernanda/projects ogre/ogreapp-new/build/dist/bin" />
+         <Option object_output="./" />
+         <Option type="0" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DBOOST_ALL_NO_LIB" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/ois" />
+            <Add directory="/usr/include/opencv" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+            <Add directory="/usr/local/include/OGRE" />
+            <Add directory="/usr/local/include/OGRE/Overlay" />
+            <Add directory="/usr/local/share/OGRE/samples/Common/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 OgreApp" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="OgreApp/fast">
+         <Option output="/home/fernanda/projects ogre/ogreapp-new/build/dist/bin/OgreApp" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/fernanda/projects ogre/ogreapp-new/build/dist/bin" />
+         <Option object_output="./" />
+         <Option type="0" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DBOOST_ALL_NO_LIB" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/ois" />
+            <Add directory="/usr/include/opencv" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+            <Add directory="/usr/local/include/OGRE" />
+            <Add directory="/usr/local/include/OGRE/Overlay" />
+            <Add directory="/usr/local/share/OGRE/samples/Common/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 OgreApp/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="edit_cache">
+         <Option working_dir="/home/fernanda/projects ogre/ogreapp-new/build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 edit_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="install">
+         <Option working_dir="/home/fernanda/projects ogre/ogreapp-new/build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 install" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="install/local">
+         <Option working_dir="/home/fernanda/projects ogre/ogreapp-new/build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 install/local" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="install/strip">
+         <Option working_dir="/home/fernanda/projects ogre/ogreapp-new/build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 install/strip" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="list_install_components">
+         <Option working_dir="/home/fernanda/projects ogre/ogreapp-new/build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 list_install_components" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="rebuild_cache">
+         <Option working_dir="/home/fernanda/projects ogre/ogreapp-new/build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 rebuild_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/fernanda/projects\ ogre/ogreapp-new/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      </Build>
+      <Unit filename="/home/fernanda/projects ogre/ogreapp-new/BaseApplication.cpp">
+      </Unit>
+      <Unit filename="/home/fernanda/projects ogre/ogreapp-new/TutorialApplication.cpp">
+      </Unit>
+      <Unit filename="/home/fernanda/projects ogre/ogreapp-new/BaseApplication.h">
+      </Unit>
+      <Unit filename="/home/fernanda/projects ogre/ogreapp-new/TutorialApplication.h">
+      </Unit>
+      <Unit filename="/home/fernanda/projects ogre/ogreapp-new/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/home/fernanda/projects ogre/ogreapp-new/../../../../usr/local/lib/OGRE/cmake/FindOGRE.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\OGRE\cmake\" />
+      </Unit>
+      <Unit filename="/home/fernanda/projects ogre/ogreapp-new/../../../../usr/local/lib/OGRE/cmake/FindPkgMacros.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\OGRE\cmake\" />
+      </Unit>
+      <Unit filename="/home/fernanda/projects ogre/ogreapp-new/../../../../usr/local/lib/OGRE/cmake/PreprocessorUtils.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\OGRE\cmake\" />
+      </Unit>
+      <Unit filename="/home/fernanda/projects ogre/ogreapp-new/../../../../usr/local/lib/OGRE/cmake/FindOIS.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\OGRE\cmake\" />
+      </Unit>
+      <Unit filename="/home/fernanda/projects ogre/ogreapp-new/../../../../usr/local/lib/OGRE/cmake/FindPkgMacros.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\OGRE\cmake\" />
+      </Unit>
+      <Unit filename="/home/fernanda/projects ogre/ogreapp-new/../../../../usr/share/OpenCV/OpenCVConfig-version.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\usr\share\OpenCV\" />
+      </Unit>
+      <Unit filename="/home/fernanda/projects ogre/ogreapp-new/../../../../usr/share/OpenCV/OpenCVConfig.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\usr\share\OpenCV\" />
+      </Unit>
+   </Project>
+</CodeBlocks_project_file>
