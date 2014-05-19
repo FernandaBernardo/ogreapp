@@ -1,6 +1,4 @@
 #include "TutorialApplication.h"
-#include <opencv2/opencv.hpp>
-#include <opencv2/highgui/highgui.hpp>
 
 //-------------------------------------------------------------------------------------
 TutorialApplication::TutorialApplication(void){
@@ -32,32 +30,6 @@ void TutorialApplication::createScene(void){
 	mPlaneNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 	mPlaneNode->attachObject(mPlaneEnt);
 
-	cv::VideoCapture cap(0); // open the video camera no. 0
-
-    if (!cap.isOpened()) { // if not success, exit program
-        return;
-    }
-
-    double dWidth = cap.get(CV_CAP_PROP_FRAME_WIDTH); //get the width of frames of the video
-    double dHeight = cap.get(CV_CAP_PROP_FRAME_HEIGHT); //get the height of frames of the video
-
-    cv::namedWindow("MyVideo",CV_WINDOW_AUTOSIZE); //create a window called "MyVideo"
-
-    while (1) {
-        cv::Mat frame;
-
-        bool bSuccess = cap.read(frame); // read a new frame from video
-
-        if (!bSuccess) { //if not success, break loop
-            break;
-        }
-
-        imshow("MyVideo", frame); //show the frame in "MyVideo" window
-
-        if (cv::waitKey(30) == 27) { //wait for 'esc' key press for 30ms. If 'esc' key is pressed, break loop
-            break;
-        }
-    }
 }
 //-------------------------------------------------------------------------------------
 void TutorialApplication::createFrameListener(void){
@@ -68,6 +40,31 @@ void TutorialApplication::createFrameListener(void){
 //-------------------------------------------------------------------------------------
 bool TutorialApplication::frameRenderingQueued(const Ogre::FrameEvent& evt){
 	mPlaneNode->yaw(Ogre::Radian(evt.timeSinceLastFrame));
+
+	cv::VideoCapture cap(0);
+
+    if (!cap.isOpened()) { // if not success, exit program
+        return false;
+    }
+
+    double dWidth = cap.get(CV_CAP_PROP_FRAME_WIDTH); //get the width of frames of the video
+    double dHeight = cap.get(CV_CAP_PROP_FRAME_HEIGHT); //get the height of frames of the video
+
+    cv::namedWindow("MyVideo",CV_WINDOW_AUTOSIZE); //create a window called "MyVideo"
+
+    cv::Mat frame;
+
+    bool bSuccess = cap.read(frame); // read a new frame from video
+
+    if (!bSuccess) { //if not success, break loop
+        return false;
+    }
+
+    imshow("MyVideo", frame); //show the frame in "MyVideo" window
+
+    if (cv::waitKey(30) == 27) {
+        return false;
+    }
 
 	return BaseApplication::frameRenderingQueued(evt);
 }
