@@ -41,16 +41,16 @@ OgreHardwarePixelBuffer.h
 /home/fernanda/projects ogre/ogreapp-new/TutorialApplication.cpp
 TutorialApplication.h
 /home/fernanda/projects ogre/ogreapp-new/TutorialApplication.h
-opencv2/opencv.hpp
--
-opencv2/highgui/highgui.hpp
--
 windows.h
 /home/fernanda/projects ogre/ogreapp-new/windows.h
 
 /home/fernanda/projects ogre/ogreapp-new/TutorialApplication.h
 BaseApplication.h
 /home/fernanda/projects ogre/ogreapp-new/BaseApplication.h
+opencv2/opencv.hpp
+-
+opencv2/highgui/highgui.hpp
+-
 
 /usr/include/ois/OIS.h
 OISPrereqs.h

@@ -62,18 +62,23 @@ void TutorialApplication::createScene(void){
     node->attachObject(rect);
 }
 //-------------------------------------------------------------------------------------
-//void TutorialApplication::createFrameListener(void){
-//	BaseApplication::createFrameListener();
-//}
+void TutorialApplication::createFrameListener(void){
+	BaseApplication::createFrameListener();
+}
 //-------------------------------------------------------------------------------------
 bool TutorialApplication::frameRenderingQueued(const Ogre::FrameEvent& evt){
-	//mPlaneNode->yaw(Ogre::Radian(evt.timeSinceLastFrame));
-
     image = cvQueryFrame(capture);
     buffer = CapTex->getBuffer();
 
     buffer->lock(Ogre::HardwareBuffer::HBL_DISCARD);
     Ogre::uint8* data = (Ogre::uint8*)buffer->getCurrentLock().data;
+
+    for (int i = 0; i < image->height; i++ ) {
+        for(int j=0; j < image->width; j++ ) {
+            data[(j + (i*image->width))] = image->imageData[j+(i*image->width)];
+        }
+    }
+
     buffer->unlock();
 
     CapTex->getBuffer()->blitFromMemory(Ogre::PixelBox(CapTex->getWidth(), CapTex->getHeight(),

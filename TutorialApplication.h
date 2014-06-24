@@ -13,18 +13,9 @@ public:
 
 protected:
     virtual void createScene(void);
-    //virtual void createFrameListener(void);
+    virtual void createFrameListener(void);
     virtual bool frameRenderingQueued(const Ogre::FrameEvent& evt);
 
-    Ogre::MovablePlane* mPlane;
-    Ogre::Entity* mPlaneEnt;
-    Ogre::SceneNode* mPlaneNode;
-    Ogre::Rectangle2D* mMiniScreen;
-
-    //Root *mRoot;
-    //OIS::Keyboard *mKeyboard;
-    //OIS::Mouse *mMouse;
-    //OIS::InputManager *mInputManager;
     Ogre::HardwarePixelBufferSharedPtr buffer;
     Ogre::TexturePtr CapTex;
     Ogre::MaterialPtr CapMat;
