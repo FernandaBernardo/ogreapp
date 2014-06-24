@@ -1,6 +1,5 @@
 #include "TutorialApplication.h"
-#include <opencv2/opencv.hpp>
-#include <opencv2/highgui/highgui.hpp>
+
 
 //-------------------------------------------------------------------------------------
 TutorialApplication::TutorialApplication(void){
@@ -18,57 +17,67 @@ void TutorialApplication::createScene(void){
 	mCamera->setPosition(60, 200, 70);
 	mCamera->lookAt(0,0,0);
 
-	Ogre::MaterialPtr mat = Ogre::MaterialManager::getSingleton().create("PlaneMat", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-	Ogre::TextureUnitState* tuisTexture = mat->getTechnique(0)->getPass(0)->createTextureUnitState("grass_1024.jpg");
+	capture = cvCaptureFromCAM(0);
+	image = cvQueryFrame(capture);
+	rawdata = (unsigned char*)(image->imageData);
 
-	mPlane = new Ogre::MovablePlane("Plane");
-	mPlane->d = 0;
-	mPlane->normal = Ogre::Vector3::UNIT_Y;
+	CapTex = Ogre::TextureManager::getSingleton().createManual("CapTex",
+                    Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+                    Ogre::TEX_TYPE_2D,
+                    640, 480, 0,
+                    Ogre::PF_L8/*PF_R3G3B2*/, Ogre::TU_DYNAMIC_WRITE_ONLY_DISCARDABLE);
 
-	Ogre::MeshManager::getSingleton().createPlane("PlaneMesh", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, *mPlane, 120, 120, 1, 1, true, 1, 1, 1, Ogre::Vector3::UNIT_Z);
-	mPlaneEnt = mSceneMgr->createEntity("PlaneEntity", "PlaneMesh");
-	mPlaneEnt->setMaterialName("PlaneMat");
+    buffer = CapTex->getBuffer();
+    buffer->lock(Ogre::HardwareBuffer::HBL_DISCARD);
+    Ogre::uint8* data = (Ogre::uint8*)buffer->getCurrentLock().data;
 
-	mPlaneNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-	mPlaneNode->attachObject(mPlaneEnt);
+    for (int i = 0; i < image->height; i++ ) {
+        for(int j=0; j < image->width; j++ ) {
+            data[(j + (i*image->width))] = image->imageData[j+(i*image->width)];
+        }
+    }
 
+    buffer->unlock();
+
+    CapMat = Ogre::MaterialManager::getSingleton().create("CapMat", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+    CapMat->getTechnique(0)->getPass(0)->createTextureUnitState("CapTex");
+    CapMat->getTechnique(0)->getPass(0)->setDepthCheckEnabled(false);
+    CapMat->getTechnique(0)->getPass(0)->setDepthWriteEnabled(false);
+    CapMat->getTechnique(0)->getPass(0)->setLightingEnabled(false);
+
+    CapTex->getBuffer()->blitFromMemory(Ogre::PixelBox(CapTex->getWidth(), CapTex->getHeight(),
+                            CapTex->getDepth(), CapTex->getFormat()/*PF_A8R8G8B8*/, data));
+
+    Ogre::Rectangle2D* rect = new Ogre::Rectangle2D(true);
+    rect->setCorners(-1.0, 1.0, 1.0, -1.0);
+    rect->setMaterial("CapMat");
+
+    Ogre::AxisAlignedBox aabInf;
+    aabInf.setInfinite();
+    rect->setBoundingBox(aabInf);
+
+    rect->setRenderQueueGroup(Ogre::RENDER_QUEUE_BACKGROUND);
+
+    Ogre::SceneNode* node = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+    node->attachObject(rect);
 }
 //-------------------------------------------------------------------------------------
-void TutorialApplication::createFrameListener(void){
-	BaseApplication::createFrameListener();
-
-	mTrayMgr->hideLogo();
-}
+//void TutorialApplication::createFrameListener(void){
+//	BaseApplication::createFrameListener();
+//}
 //-------------------------------------------------------------------------------------
 bool TutorialApplication::frameRenderingQueued(const Ogre::FrameEvent& evt){
-	mPlaneNode->yaw(Ogre::Radian(evt.timeSinceLastFrame));
+	//mPlaneNode->yaw(Ogre::Radian(evt.timeSinceLastFrame));
 
-	cv::VideoCapture cap(0);
+    image = cvQueryFrame(capture);
+    buffer = CapTex->getBuffer();
 
-    if (!cap.isOpened()) { // if not success, exit program
-        return false;
-    }
+    buffer->lock(Ogre::HardwareBuffer::HBL_DISCARD);
+    Ogre::uint8* data = (Ogre::uint8*)buffer->getCurrentLock().data;
+    buffer->unlock();
 
-    double dWidth = cap.get(CV_CAP_PROP_FRAME_WIDTH); //get the width of frames of the video
-    double dHeight = cap.get(CV_CAP_PROP_FRAME_HEIGHT); //get the height of frames of the video
-
-
-
-    cv::namedWindow("MyVideo",CV_WINDOW_AUTOSIZE); //create a window called "MyVideo"
-
-    cv::Mat frame;
-
-    bool bSuccess = cap.read(frame); // read a new frame from video
-
-    if (!bSuccess) { //if not success, break loop
-        return false;
-    }
-
-    imshow("MyVideo", frame); //show the frame in "MyVideo" window
-
-    if (cv::waitKey(30) == 27) {
-        return false;
-    }
+    CapTex->getBuffer()->blitFromMemory(Ogre::PixelBox(CapTex->getWidth(), CapTex->getHeight(),
+                            CapTex->getDepth(), CapTex->getFormat()/*PF_A8R8G8B8*/, data));
 
 	return BaseApplication::frameRenderingQueued(evt);
 }
