@@ -24,29 +24,16 @@ void TutorialApplication::createScene(void){
 	CapTex = Ogre::TextureManager::getSingleton().createManual("CapTex",
                     Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
                     Ogre::TEX_TYPE_2D,
-                    640, 480, 0,
-                    Ogre::PF_L8/*PF_R3G3B2*/, Ogre::TU_DYNAMIC_WRITE_ONLY_DISCARDABLE);
+                    image->width, image->height, 0,
+                    Ogre::PF_BYTE_BGRA, Ogre::TU_DYNAMIC_WRITE_ONLY_DISCARDABLE);
 
-    buffer = CapTex->getBuffer();
-    buffer->lock(Ogre::HardwareBuffer::HBL_DISCARD);
-    Ogre::uint8* data = (Ogre::uint8*)buffer->getCurrentLock().data;
-
-    for (int i = 0; i < image->height; i++ ) {
-        for(int j=0; j < image->width; j++ ) {
-            data[(j + (i*image->width))] = image->imageData[j+(i*image->width)];
-        }
-    }
-
-    buffer->unlock();
+    updateTexture();
 
     CapMat = Ogre::MaterialManager::getSingleton().create("CapMat", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
     CapMat->getTechnique(0)->getPass(0)->createTextureUnitState("CapTex");
     CapMat->getTechnique(0)->getPass(0)->setDepthCheckEnabled(false);
     CapMat->getTechnique(0)->getPass(0)->setDepthWriteEnabled(false);
     CapMat->getTechnique(0)->getPass(0)->setLightingEnabled(false);
-
-    CapTex->getBuffer()->blitFromMemory(Ogre::PixelBox(CapTex->getWidth(), CapTex->getHeight(),
-                            CapTex->getDepth(), CapTex->getFormat()/*PF_A8R8G8B8*/, data));
 
     Ogre::Rectangle2D* rect = new Ogre::Rectangle2D(true);
     rect->setCorners(-1.0, 1.0, 1.0, -1.0);
@@ -68,23 +55,34 @@ void TutorialApplication::createFrameListener(void){
 //-------------------------------------------------------------------------------------
 bool TutorialApplication::frameRenderingQueued(const Ogre::FrameEvent& evt){
     image = cvQueryFrame(capture);
+    updateTexture();
+	return BaseApplication::frameRenderingQueued(evt);
+}
+
+void TutorialApplication::updateTexture(){
     buffer = CapTex->getBuffer();
 
-    buffer->lock(Ogre::HardwareBuffer::HBL_DISCARD);
-    Ogre::uint8* data = (Ogre::uint8*)buffer->getCurrentLock().data;
+    buffer->lock(Ogre::HardwareBuffer::HBL_NORMAL);
+    const Ogre::PixelBox& pixelBox = buffer->getCurrentLock();
+    Ogre::uint8* data = (Ogre::uint8*)pixelBox.data;
 
-    for (int i = 0; i < image->height; i++ ) {
-        for(int j=0; j < image->width; j++ ) {
-            data[(j + (i*image->width))] = image->imageData[j+(i*image->width)];
+    int h = image->height;
+    int w = image->width;
+
+    for (int i = 0; i < h; i++ ) {
+        for(int j=0; j < w; j++ ) {
+            data[((j+(i*w))*4)] = image->imageData[(j+(i*w)*3)];//X
+            data[((j+(i*w))*4)+1] = image->imageData[(j+(i*w)*3)+1];//
+            data[((j+(i*w))*4)+2] = image->imageData[(j+(i*w)*3)+2];
+            data[((j+(i*w))*4)+3] = image->imageData[(j+(i*w)*3)+3];
         }
+        data += pixelBox.getRowSkip() * Ogre::PixelUtil::getNumElemBytes(pixelBox.format);
     }
 
     buffer->unlock();
 
     CapTex->getBuffer()->blitFromMemory(Ogre::PixelBox(CapTex->getWidth(), CapTex->getHeight(),
                             CapTex->getDepth(), CapTex->getFormat()/*PF_A8R8G8B8*/, data));
-
-	return BaseApplication::frameRenderingQueued(evt);
 }
 
 //-------------------------------------------------------------------------------------
